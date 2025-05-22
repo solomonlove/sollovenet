@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI ERP Initiative - Transforming Manufacturing Development</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #005A9C; /* Professional Blue */
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #A0D2EB; /* Lighter Blue for hover */
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 90, 156, 0.85), rgba(0, 90, 156, 0.85));
+            background-color: #004a80; 
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #F0B429; /* Accent Gold/Yellow */
+            color: #333;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #d49d22;
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        section:nth-child(even) {
+            background-color: #fff;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #005A9C;
+        }
+        
+        section h3 {
+            font-size: 1.8rem;
+            color: #0077cc;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .single-column-layout .card { /* For budget section to have single column cards */
+             grid-column: 1 / -1; /* Make card span full width if needed */
+        }
+
+
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .card h4 {
+            font-size: 1.3rem;
+            color: #005A9C;
+            margin-bottom: 10px;
+        }
+        .card p, .card ul {
+            font-size: 0.95rem;
+        }
+        .card ul {
+            list-style-position: inside;
+            padding-left: 5px;
+            margin-top: 10px;
+        }
+         .card ul li {
+            margin-bottom: 5px;
+        }
+
+
+        ul.styled-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul.styled-list li {
+            background: #eef7ff;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 4px solid #0077cc;
+        }
+         ul.styled-list li::before {
+            content: "✓ "; 
+            color: #0077cc;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+
+        /* Specific Section: Scope - Modules */
+        #scope .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        #scope .module-item {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d6eaff;
+        }
+        #scope .module-item .icon {
+            font-size: 2rem; 
+            color: #005A9C;
+            margin-bottom: 10px;
+        }
+        #scope .module-item h5 {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Implementation Phases */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #005A9C;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid #005A9C;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #eef7ff;
+        }
+        .timeline-item.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #eef7ff transparent transparent;
+        }
+        .timeline-item.right::after {
+            left: -10px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background-color: #eef7ff;
+            position: relative;
+            border-radius: 6px;
+        }
+        .timeline-content h5 {
+            font-size: 1.2rem; 
+            color: #005A9C;
+            margin-bottom: 8px;
+        }
+        .timeline-content p {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .timeline-content p.duration {
+            font-size: 0.95rem; 
+            font-weight: bold;
+            color: #004a80; 
+            margin-top: 8px;
+        }
+
+        /* Budget Section - Updated for Table Display */
+        #budget .budget-summary-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .cost-table-container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cost-table th, .cost-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .cost-table th {
+            background-color: #005A9C;
+            color: white;
+            font-size: 1.1rem;
+        }
+        .cost-table td {
+            font-size: 1rem;
+        }
+        .cost-table tr:nth-child(1) td { background-color: #ffcccb; /* Light Red */ }
+        .cost-table tr:nth-child(2) td { background-color: #add8e6; /* Light Blue */ }
+        .cost-table tr:nth-child(3) td { background-color: #ffffe0; /* Light Yellow */ }
+        
+        .cost-table .category-name {
+            font-weight: 600;
+            color: #333;
+        }
+        .cost-table .cost-value {
+            font-weight: bold;
+            color: #004a80;
+        }
+        .cost-table .grand-total td {
+            background-color: #e0e0e0 !important; /* Light Grey - important to override nth-child */
+            font-weight: bold;
+            font-size: 1.15rem;
+            color: #D9534F; /* Accent for Grand Total */
+        }
+        .cost-table .grand-total .category-name {
+             color: #000;
+        }
+
+
+        #budget .total-investment { 
+            text-align: center;
+            margin-top: 20px; /* Reduced margin as table is primary */
+            padding: 15px;
+            background-color: #eef7ff;
+            border-radius: 8px;
+        }
+        #budget .total-investment h3 {
+            color: #005A9C;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        #budget .total-investment .total-cost-value { 
+            font-size: 2.2rem; 
+            font-weight: bold;
+            color: #D9534F; 
+        }
+
+
+        /* Contact Section */
+        #contact p {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        .contact-info {
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+        }
+
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            .nav-links {
+                position: fixed; 
+                right: 0px;
+                height: 100vh; 
+                top: 0; 
+                background: #005A9C;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center; 
+                width: 70%; 
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in-out; 
+            }
+            .nav-links li {
+                opacity: 0;
+                margin-left: 0;
+                margin-bottom: 30px; 
+            }
+            .burger { 
+                display: block;
+                z-index: 1001; 
+            }
+            .nav-active {
+                transform: translateX(0%);
+            }
+            .nav-active li {
+                opacity: 1;
+                transition: opacity 0.4s ease-in forwards, transform 0.4s ease-in forwards; 
+                animation-delay: calc(0.1s * var(--i)); 
+            }
+             @keyframes navLinkFadeAndSlide { 
+                from {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+            .nav-active li {
+                animation-name: navLinkFadeAndSlide;
+                animation-duration: 0.5s;
+                animation-fill-mode: forwards;
+            }
+
+
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px,6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px,-6px); }
+
+            #hero h1 { font-size: 2.2rem; }
+            #hero p { font-size: 1rem; }
+            section h2 { font-size: 1.8rem; }
+
+            .timeline::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
+            .timeline-item.left::before, .timeline-item.right::before {
+                left: 42px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #eef7ff transparent transparent;
+            }
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 10px;
+            }
+            .timeline-item.right { left: 0%; }
+
+            .content-grid {
+                grid-template-columns: 1fr; 
+            }
+            
+            .cost-table th, .cost-table td {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            .cost-table th { font-size: 1rem; }
+            .cost-table .grand-total td { font-size: 1rem; }
+            #budget .total-investment .total-cost-value { font-size: 1.8rem; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#hero" class="logo">MIDI ERP</a>
+            <ul class="nav-links">
+                <li style="--i:1;"><a href="#hero">Home</a></li>
+                <li style="--i:2;"><a href="#about-midi">About MIDI</a></li>
+                <li style="--i:3;"><a href="#why-erp">The Initiative</a></li>
+                <li style="--i:4;"><a href="#objectives">Objectives</a></li>
+                <li style="--i:5;"><a href="#scope">Scope</a></li>
+                <li style="--i:6;"><a href="#implementation-journey">Timeline</a></li>
+                <li style="--i:7;"><a href="#budget">Budget</a></li>
+                <li style="--i:8;"><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Transforming Manufacturing Development in Ethiopia</h1>
+                <p>The Manufacturing Industry Development Institute (MIDI) is implementing an advanced Enterprise Resource Planning (ERP) system to revolutionize its operations and enhance support for the nation's manufacturing sector.</p>
+                <a href="#why-erp" class="cta-button">Discover the Initiative</a>
+            </div>
+        </section>
+
+        <section id="about-midi">
+            <div class="container">
+                <h2>About The Manufacturing Industry Development Institute (MIDI)</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">Established to be a cornerstone for industrial advancement, MIDI is dedicated to enhancing the competitiveness and sustainable growth of Ethiopia's manufacturing sector. The institute provides a comprehensive range of support initiatives, including research and development, product and technology development, market analysis, and specialized workforce training. MIDI serves as a vital catalyst for innovation and efficiency, fostering collaboration between industry professionals and researchers to develop tailored solutions that meet specific industry needs and address evolving challenges.</p>
+            </div>
+        </section>
+
+        <section id="why-erp">
+            <div class="container">
+                <h2>The ERP Initiative: A New Era of Efficiency</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">MIDI is embarking on the implementation of an integrated ERP system to streamline its diverse functions and services. This strategic move aims to overcome challenges posed by fragmented systems and manual processes, leading to improved data management, streamlined workflows, and enhanced collaboration across all departments and research centers. The ERP will serve as a central platform, empowering MIDI to provide more effective and timely support to manufacturing firms, fostering innovation and sustainable growth throughout the industry.</p>
+            </div>
+        </section>
+
+        <section id="objectives">
+            <div class="container">
+                <h2>Core Objectives of the ERP Implementation</h2>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🚀 Enhanced Operational Efficiency</h4>
+                        <p>Automate and streamline key processes, reducing manual tasks, minimizing errors, and boosting overall productivity across administrative, fleet, and technical support functions.</p>
+                    </div>
+                    <div class="card">
+                        <h4>📊 Improved Data Accuracy & Centralization</h4>
+                        <p>Establish a single source of truth by centralizing data from various departments, eliminating silos, reducing errors, and enhancing decision-making capabilities.</p>
+                    </div>
+                    <div class="card">
+                        <h4>💡 Better Decision-Making</h4>
+                        <p>Provide real-time insights and advanced analytics across business functions, enabling data-driven decisions for performance evaluation, resource allocation, and strategic planning.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🤝 Enhanced Collaboration</h4>
+                        <p>Foster seamless communication and coordination between departments by providing a unified platform for accessing and sharing information, crucial for multi-organizational projects.</p>
+                    </div>
+                    <div class="card">
+                        <h4>📈 Scalability and Future Growth</h4>
+                        <p>Implement a flexible and scalable ERP system that can adapt to MIDI's expanding operations, supporting new functionalities, users, and departments as the institute grows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scope">
+            <div class="container">
+                <h2>Scope of the ERP System</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">The ERP system will integrate a wide array of MIDI's functions to ensure comprehensive operational management and support.</p>
+                
+                <h3>Key Functional Modules</h3>
+                <div class="modules-grid">
+                    <div class="module-item"><span class="icon">🏛️</span><h5>Investment Management</h5></div>
+                    <div class="module-item"><span class="icon">📜</span><h5>Permits & Compliance</h5></div>
+                    <div class="module-item"><span class="icon">💡</span><h5>Utilities & Infrastructure</h5></div>
+                    <div class="module-item"><span class="icon">🔬</span><h5>Quality Control</h5></div>
+                    <div class="module-item"><span class="icon">🌿</span><h5>Environmental Management</h5></div>
+                    <div class="module-item"><span class="icon">🛠️</span><h5>Consultancy & Support</h5></div>
+                    <div class="module-item"><span class="icon">🧪</span><h5>Research & Development</h5></div>
+                    <div class="module-item"><span class="icon">🎓</span><h5>Capacity Building & Training</h5></div>
+                    <div class="module-item"><span class="icon">📚</span><h5>Information Management</h5></div>
+                    <div class="module-item"><span class="icon">💻</span><h5>IT & Support Services</h5></div>
+                    <div class="module-item"><span class="icon">📈</span><h5>Project Management</h5></div>
+                    <div class="module-item"><span class="icon">📊</span><h5>Monitoring & Evaluation</h5></div>
+                    <div class="module-item"><span class="icon">⚡</span><h5>Energy Management</h5></div>
+                    <div class="module-item"><span class="icon">🚚</span><h5>Fleet Management</h5></div>
+                </div>
+
+                <h3>Integrated Centers</h3>
+                <p style="text-align: center; max-width: 800px; margin: 20px auto 30px auto;">The ERP system will connect and streamline operations across MIDI and its vital research and development centers:</p>
+                <ul class="styled-list" style="max-width: 600px; margin: 0 auto;">
+                    <li>Manufacturing Industry Development Institute (MIDI) - Central</li>
+                    <li>Textile and Garment Industry Research and Development Centre (TGIR)</li>
+                    <li>Leather and Leather Product Industry Research and Development Centre (LIPD)</li>
+                    <li>Chemical and Construction Inputs Industry Research and Development Center (CCII)</li>
+                    <li>Food and Beverage Industry Development Center (FBIR)</li>
+                    <li>Metal Manufacturing Technology Engineering Industry Development Center (MTEI)</li>
+                    <li>Kaizen Excellence Center (KEC)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="implementation-journey">
+            <div class="container">
+                <h2>Our Implementation Journey & Timeline</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">The ERP implementation is a phased approach. The following are indicative durations for each key phase, based on the project plan (refer to Table 2 of the proposal for full details).</p>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content"><h5>1. Project Initiation & Planning</h5><p>Scope definition, team assembly, detailed roadmap, risk assessment.</p><p class="duration">Estimated Duration: 4 Weeks</p></div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content"><h5>2. Requirements Gathering & Analysis</h5><p>Stakeholder interviews, process mapping, functional needs, gap analysis.</p><p class="duration">Estimated Duration: 6 Weeks</p></div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content"><h5>3. System Design & Configuration</h5><p>ERP architecture design, module customization, integration planning.</p><p class="duration">Estimated Duration: 10 Weeks</p></div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content"><h5>4. Data Migration</h5><p>Data cleansing, mapping, migration execution, and validation.</p><p class="duration">Estimated Duration: 6 Weeks (may overlap)</p></div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content"><h5>5. Testing & Quality Assurance</h5><p>Unit, integration, User Acceptance (UAT), performance, security testing.</p><p class="duration">Estimated Duration: 8 Weeks</p></div>
+                    </div>
+                     <div class="timeline-item right">
+                        <div class="timeline-content"><h5>6. Training & Change Management</h5><p>Material development, training sessions, super-user program.</p><p class="duration">Estimated Duration: 5 Weeks (intensive pre-go-live)</p></div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content"><h5>7. Go-Live & Deployment</h5><p>Final migration, system deployment, intensive go-live support.</p><p class="duration">Estimated Duration: 2 Weeks (cutover & initial support)</p></div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content"><h5>8. Post-Implementation Support & Continuous Improvement</h5><p>Ongoing technical support, maintenance, user feedback, enhancements.</p><p class="duration">Status: Ongoing</p></div>
+                    </div>
+                </div>
+                 <p style="text-align: center; font-style: italic; max-width: 800px; margin: 40px auto 0 auto;">Note: These durations are illustrative. The comprehensive project schedule is detailed in the official ERP Proposal document.</p>
+            </div>
+        </section>
+
+        <section id="budget">
+            <div class="container">
+                <h2>Project Investment & Budget Overview</h2>
+                <p class="budget-summary-intro" style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">The ERP system implementation is a strategic investment. The following table summarizes the key cost categories as provided in the project's financial breakdown.</p>
+
+                <div class="cost-table-container">
+                    <h3 style="text-align:center; margin-bottom: 20px; color: #005A9C;">Cost Breakdown</h3>
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Total Cost (ETB)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="category-name">ERP Infrastructure Costs</td>
+                                <td class="cost-value">ETB 7,900,000</td>
+                            </tr>
+                            <tr>
+                                <td class="category-name">ERP Implementation Costs</td>
+                                <td class="cost-value">ETB 12,450,000</td>
+                            </tr>
+                            <tr>
+                                <td class="category-name">Consulting Costs</td>
+                                <td class="cost-value">ETB 3,300,600</td>
+                            </tr>
+                            <tr class="grand-total">
+                                <td class="category-name">Grand Total</td>
+                                <td class="cost-value">ETB 23,650,600</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="total-investment">
+                    <h3>Total Project Investment</h3>
+                    <p class="total-cost-value">ETB 23,650,600</p>
+                    <p style="font-size: 0.9rem; margin-top:10px;"><i>This total reflects the summarized costs for the ERP initiative. For a detailed itemization, please refer to the official MIDI ERP Proposal document. Ongoing annual maintenance costs are separate and outlined in the proposal.</i></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="expected-outcomes">
+            <div class="container">
+                <h2>Expected Outcomes & Benefits</h2>
+                 <div class="content-grid">
+                    <div class="card">
+                        <h4>Enhanced Efficiency</h4>
+                        <p>Streamlined operations and reduced administrative overhead.</p>
+                    </div>
+                     <div class="card">
+                        <h4>Real-Time Insights</h4>
+                        <p>Improved decision-making through accessible, accurate data.</p>
+                    </div>
+                     <div class="card">
+                        <h4>Stronger Collaboration</h4>
+                        <p>Better inter-departmental communication and project alignment.</p>
+                    </div>
+                     <div class="card">
+                        <h4>Improved Support Services</h4>
+                        <p>More effective and tailored support for manufacturing firms.</p>
+                    </div>
+                     <div class="card">
+                        <h4>Foundation for Growth</h4>
+                        <p>A scalable system ready to support MIDI's future development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Stay Updated</h2>
+                <p>The MIDI ERP initiative is a significant step towards a more efficient and impactful future for Ethiopia's manufacturing sector. We are committed to transparency and will provide updates on our progress.</p>
+                <div class="contact-info">
+                    <p>For more information about MIDI and its services, please refer to official Ministry of Industry channels.</p>
+                    <p>Manufacturing Industry Development Institute (MIDI)</p>
+                    <p>Addis Ababa, Ethiopia</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Manufacturing Industry Development Institute. All rights reserved. <br>This webpage is for informational purposes regarding the ERP Initiative.</p>
+        </div>
+    </footer>
+
+    <script>
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('nav-active');
+
+                navLinks.forEach((link, index) => {
+                    link.style.setProperty('--i', index + 1); 
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        // Animation is now handled by CSS using .nav-active
+                    }
+                });
+                burger.classList.toggle('toggle');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('nav-active')) {
+                        nav.classList.remove('nav-active');
+                        burger.classList.remove('toggle');
+                        navLinks.forEach(link => link.style.animation = '');
+                    }
+                });
+            });
+        }
+        navSlide();
+    </script>
+</body>
+</html>
